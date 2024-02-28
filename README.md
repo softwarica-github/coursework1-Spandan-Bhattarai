@@ -7,20 +7,20 @@
 <br />
 <div align="center">
   <a href="https://github.com/Spandan-Bhattarai/cw1-Spandan-Bhattarai">
-    <img src="logo.png" alt="Logo" width="80" height="80">
+    <img src="image.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Book Paradime</h3>
+  <h3 align="center">Web Enumerator</h3>
 
   <p align="center">
-    A project made for ST4056CEM Introduction to Web Development and Database Systems
+    A coursework made for ST5062CEM Programming And Algorithms 2
     <br />
     <br />
-    <a href="https://youtu.be/4r9yIrtiXaI">View Demo</a>
+    <a href="">View Demo</a>
     ·
-    <a href="https://github.com/Spandan-Bhattarai/cw1-Spandan-Bhattarai/issues">Report Bug</a>
+    <a href="https://github.com/softwarica-github/coursework1-Spandan-Bhattarai/issues">Report Bug</a>
     ·
-    <a href="https://github.com/Spandan-Bhattarai/cw1-Spandan-Bhattarai/issues">Request Feature</a>
+    <a href="https://github.com/softwarica-github/coursework1-Spandan-Bhattarai/issues">Request Feature</a>
   </p>
 </div>
 
@@ -54,9 +54,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Click here for the Demo video : <a href="https://youtu.be/4r9yIrtiXaI" target="_blank"> Watch demo</a>
+Click here for the Demo video : <a href="...." target="_blank"> Watch demo</a>
 
-Your one-stop destination for all things books. Browse our collection, request new books, and share your love of reading.
+Your one-stop destination for web-enumerations.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -66,11 +66,8 @@ Your one-stop destination for all things books. Browse our collection, request n
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* HTML
-* CSS
-* Javascript
-* Php
-* Bootstrap
+* Python
+* Tkinter
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -83,7 +80,7 @@ Follow to set-up and run the program.
 
 ### Prerequisites
 
-You will need local server and Xampp server.
+You will need tkinter, requests and unittest modules of python.
 
 ### Installation
 
@@ -93,12 +90,9 @@ _follow the given instrcutions below to prepare and run your own bookparadime_
    ```sh
    git clone https://github.com/Spandan-Bhattarai/cw1-Spandan-Bhattarai.git
    ```
-2. Locate the `project.sql`
-3. Make a database named project and import inside the database
-4. Copy your `cw1-Spandan-Bhattarai` folder and save it inside of xampp/htdocs folder
-5. Use the following for login:
-6. Admin email: `adm1n@gmail.com` password: `admin`
-7. User: Create new user from registration page
+2. Locate the `setup.py`
+3. Start the program
+4. Chose GUI/CLI mode as you prefer
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -125,7 +119,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- Version -->
 ## Version
 
-After beta release followed by minor changes, the project is currently in the Version 1.1
+After adding cli versionfollowed by minor changes, the program is currently in the Version 1.1
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -135,6 +129,6 @@ After beta release followed by minor changes, the project is currently in the Ve
 ## Contact
 
 Your Name -    `Spandan bhattarai` - sbhattarai50@gmail.com<br>
-Project Link: [https://github.com/Spandan-Bhattarai/cw1_Spandan_Bhattarai_Bookparadime](https://github.com/Spandan-Bhattarai/cw1_Spandan_Bhattarai_Bookparadime)
+Project Link: https://github.com/softwarica-github/coursework1-Spandan-Bhattarai
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
