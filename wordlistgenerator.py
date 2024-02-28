@@ -8,7 +8,6 @@ class WordlistGeneratorApp:
         self.root = root
         self.root.title("Wordlist Generator")
 
-        # Frame for URL input
         self.mode_frame = tk.Frame(root, padx=10, pady=10)
         self.mode_frame.pack()
 
