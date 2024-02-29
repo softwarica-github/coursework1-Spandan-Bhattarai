@@ -16,7 +16,7 @@
     A coursework made for ST5062CEM Programming And Algorithms 2
     <br />
     <br />
-    <a href="https://youtu.be/9MKMbJ3jDnk">View Demo</a>
+    <a href="https://www.youtube.com/watch?v=9n3LZOr6xwE">View Demo</a>
     ·
     <a href="https://github.com/softwarica-github/coursework1-Spandan-Bhattarai/issues">Report Bug</a>
     ·
@@ -54,7 +54,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Click here for the Demo video : <a href="https://youtu.be/9MKMbJ3jDnk" target="_blank"> Watch demo</a>
+Click here for the Demo video : <a href="https://www.youtube.com/watch?v=9n3LZOr6xwE" target="_blank"> Watch demo</a>
 
 Your one-stop destination for web-enumerations.
 
