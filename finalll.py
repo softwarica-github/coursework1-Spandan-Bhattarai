@@ -1,107 +1,63 @@
-import requests
+import tkinter as tk
+from tkinter import scrolledtext
+from tkinter import messagebox
+import subprocess
 
-class WordlistGenerator:
-    def __init__(self):
-        self.mode_options = {
-            "1": ("Subdomain Enumeration", "https://raw.githubusercontent.com/danTaler/WordLists/master/Subdomain.txt"),
-            "2": ("Subdirectory Scanner", "https://raw.githubusercontent.com/v0re/dirb/master/wordlists/common.txt")
-        }
+def open_file(file_path, output_area):
+    with open(file_path, 'r') as file:
+        content = file.read()
+        output_area.delete(1.0, tk.END)
+        output_area.insert(tk.END, content)
 
-    def generate_wordlist(self):
-        print("Select mode:")
-        for key, value in self.mode_options.items():
-            print(f"{key}. {value[0]}")
+def create_menu(parent, label):
+    menu = tk.Menu(parent, tearoff=0)
+    parent.add_cascade(label=label, menu=menu)
+    return menu
 
-        mode = input("Enter mode number: ")
-        if mode in self.mode_options:
-            mode_name, url = self.mode_options[mode]
-            output_file = input("Enter output file name: ")
-            if output_file:
-                self.download_wordlist(url, output_file)
-                print(f"Wordlist generated successfully: {output_file}\n")
-        else:
-            print("Invalid mode selection.")
+def show_about():
+    messagebox.showinfo("About", "Web-Enumeration Scan Program\nVersion 1.0\n(c) 2024 Spandan")
 
-    def download_wordlist(self, url, output_file):
-        response = requests.get(url)
-        if response.status_code == 200:
-            with open(output_file, 'wb') as f:
-                f.write(response.content)
-        else:
-            print(f"Failed to download wordlist from {url}")
+def exit_program():
+    root.destroy()
 
-class Scanner:
-    def __init__(self):
-        pass
+def run_webscan():
+    process = subprocess.Popen(["python", "webscan.py"])
+    process.wait()
+    open_file("webscan_output.txt", output_area)
 
-    def scan(self, target_url, wordlist_file):
-        raise NotImplementedError("Subclasses must implement scan method.")
+def run_subdomainscan():
+    process = subprocess.Popen(["python", "subdomainscan.py"])
+    process.wait()
+    open_file("subdomainscan.txt", output_area)
 
-class SubdomainScanner(Scanner):
-    def scan(self, target_url, wordlist_file):
-        with open(wordlist_file, 'r') as wordlist:
-            words = wordlist.read().splitlines()
+def run_wordlistgenerator():
+    process = subprocess.Popen(["python", "wordlistgenerator.py"])
+    process.wait()
 
-        output_file = input("Enter output file name: ")
-        if output_file:
-            with open(output_file, 'w') as output:
-                for word in words:
-                    subdomain_https = f"https://{word}.{target_url}"
-                    try:
-                        status_code = requests.head(subdomain_https).status_code
-                        output.write(f"Target: {subdomain_https}\nStatus Code: {status_code}\n\n")
-                    except requests.RequestException:
-                        pass
-        
-        print("The output has been saved to:", output_file,"\n")
-
-class SubdirectoryScanner(Scanner):
-    def scan(self, target_url, wordlist_file):
-        with open(wordlist_file, 'r') as wordlist:
-            words = wordlist.read().splitlines()
-
-        output_file = input("Enter output file name: ")
-        if output_file:
-            with open(output_file, 'w') as output:
-                for word in words:
-                    url = f"{target_url}/{word}"
-                    try:
-                        response = requests.get(url, verify=True)
-                        response.raise_for_status()
-                        status_code = response.status_code
-                        output.write(f"Target: {url}\nStatus Code: {status_code}\n\n")
-                    except requests.RequestException as e:
-                        pass
-
-        print("The output has been saved to:", output_file, "\n")
 
 def main():
-    while True:
-        print("Choose an option:")
-        print("1. Subdirectory Scan")
-        print("2. Subdomain Scan")
-        print("3. Wordlist Generator")
-        print("4. Exit")
+    global root
+    root = tk.Tk()
+    root.title("Python Menu Program")
 
-        choice = input("Enter your choice: ")
+    menu_bar = tk.Menu(root)
 
-        if choice == "1":
-            target_url = input("Enter the target URL: ")
-            wordlist_file = input("Enter wordlist filename: ")
-            scanner = SubdirectoryScanner()
-            scanner.scan(target_url, wordlist_file)
-        elif choice == "2":
-            target_url = input("Enter the target URL: ")
-            wordlist_file = input("Enter wordlist filename: ")
-            scanner = SubdomainScanner()
-            scanner.scan(target_url, wordlist_file)
-        elif choice == "3":
-            generator = WordlistGenerator()
-            generator.generate_wordlist()
-        elif choice == "4":
-            break
-        else:
-            print("Invalid choice. Please choose again.")
+    file_menu = create_menu(menu_bar, "File Enumeration")
+    file_menu.add_command(label="Sub-directory Enumeration", command=run_webscan)
+    file_menu.add_command(label="Sub-domain Enumeration", command=run_subdomainscan)
+    file_menu.add_command(label="Wordlist Generator", command=run_wordlistgenerator)
+
+    help_menu = create_menu(menu_bar, "Help")
+    help_menu.add_command(label="About", command=show_about)
+    help_menu.add_command(label="Exit", command=exit_program)
+
+    root.config(menu=menu_bar)
+
+    global output_area
+    output_area = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=200, height=100)
+    output_area.pack(padx=10, pady=10)
+
+    root.mainloop()
 
 if __name__ == "__main__":
     main()

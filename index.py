@@ -6,11 +6,11 @@ def main():
     choice = input("Enter your choice: ")
 
     if choice == "1":
-        import final
-        final.main()
+        import finalll
+        finalll.main()
     elif choice == "2":
-        import final_cli
-        final_cli.main()
+        import finalcli
+        finalcli.main()
     else:
         print("Invalid choice. Please choose again.")
 
